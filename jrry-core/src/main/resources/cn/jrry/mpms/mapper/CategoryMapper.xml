@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jrry.mpms.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="cn.jrry.mpms.domain.Category">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="srt" jdbcType="INTEGER" property="srt" />
+    <result column="is_viewable" jdbcType="BIT" property="viewable" />
+    <result column="is_disabled" jdbcType="BIT" property="disabled" />
+    <result column="is_deleted" jdbcType="BIT" property="deleted" />
+    <result column="cruser" jdbcType="VARCHAR" property="cruser" />
+    <result column="crtime" jdbcType="TIMESTAMP" property="crtime" />
+    <result column="mduser" jdbcType="VARCHAR" property="mduser" />
+    <result column="mdtime" jdbcType="TIMESTAMP" property="mdtime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from mpms_category
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.jrry.mpms.domain.Category" useGeneratedKeys="true" keyProperty="id">
+    insert into mpms_category (parent_id, code, level, 
+      name, full_name, srt, 
+      is_viewable, is_disabled, is_deleted, cruser, 
+      crtime
+      )
+    values (#{parentId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{srt,jdbcType=INTEGER}, 
+      #{viewable,jdbcType=BIT}, 0, 0, #{cruser,jdbcType=VARCHAR}, 
+      #{crtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.jrry.mpms.domain.Category">
+    update mpms_category
+    set 
+      name = #{name,jdbcType=VARCHAR},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      srt = #{srt,jdbcType=INTEGER},
+      is_viewable = #{viewable,jdbcType=BIT},
+      is_disabled = #{disabled,jdbcType=BIT},
+      mduser = #{mduser,jdbcType=VARCHAR},
+      mdtime = #{mdtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="selectColumns"/>
+    from mpms_category
+    where is_deleted = 0 AND id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="selectColumns"/>
+    from mpms_category
+    WHERE is_deleted = 0
+  </select>
+  
+  <sql id="selectColumns">
+    id, parent_id, code, level, name, full_name, srt, is_viewable, is_disabled, is_deleted, cruser, 
+    crtime, mduser, mdtime
+  </sql>
+  <sql id="selectWhereCondition">
+    <where>
+      is_deleted = 0
+      <if test="disabled != null">
+        and is_disabled = #{disabled,jdbcType=BIT}
+      </if>
+      <if test="viewable != null">
+        and is_viewable = #{viewable,jdbcType=BIT}
+      </if>
+      <if test="parentId != null">
+        and parent_id = #{parentId,jdbcType=BIGINT}
+      </if>
+      <if test="name != null and name != ''">
+        <bind name="name" value="'%' + name + '%'"/>
+        and name LIKE #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="fullName != null and fullName != ''">
+        <bind name="fullName" value="'%' + fullName + '%'"/>
+        and full_name LIKE #{fullName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+
+  <update id="removeByPrimaryKey" parameterType="cn.jrry.sys.domain.Group">
+    update mpms_category
+    set
+    is_deleted = 1,
+    mduser = #{mduser,jdbcType=VARCHAR},
+    mdtime = #{mdtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="count" resultType="int">
+    select
+    COUNT(1)
+    from mpms_category
+    <include refid="selectWhereCondition"/>
+  </select>
+  <select id="select" resultMap="BaseResultMap">
+    select
+    <include refid="selectColumns"/>
+    from mpms_category
+    <include refid="selectWhereCondition"/>
+    ORDER BY ${sort} ${order}
+    limit ${offset},${rows}
+  </select>
+  <select id="selectEnabledByParentId" resultMap="BaseResultMap">
+    select
+    <include refid="selectColumns"/>
+    from mpms_category
+    where is_deleted = 0 and is_disabled = 0 and parent_id = #{parentId,jdbcType=BIGINT}
+    ORDER BY srt ASC
+  </select>
+  
+  
+  <select id="selectByParentId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="selectColumns"/>
+    from mpms_category
+    where is_deleted = 0 AND parent_id = #{parentId,jdbcType=BIGINT} ORDER BY srt ASC
+  </select>
+  
+  <select id="selectRoot" resultMap="BaseResultMap">
+    select 
+    <include refid="selectColumns"/>
+    from mpms_category
+    where is_deleted = 0 AND parent_id = 0
+  </select>
+</mapper>
