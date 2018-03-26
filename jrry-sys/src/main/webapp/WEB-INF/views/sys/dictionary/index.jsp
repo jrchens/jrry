@@ -7,15 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../../common/taglib.jsp" %>
-
-
-<script>
-    var CATEGORYS = [];
-</script>
-
-<table id="sys_permission_index_datagrid" class="easyui-datagrid"
-       data-options="title: '权限管理-列表',
-            url: '${pageContext.request.contextPath}/sys/permission/async-query',
+<table id="sys_dictionary_index_datagrid" class="easyui-datagrid"
+       data-options="title: '字典管理-列表',
+            url: '${pageContext.request.contextPath}/sys/dictionary/async-query',
             method: 'get',
             sortName: 'id',
             sortOrder: 'desc',
@@ -24,36 +18,36 @@
             rownumbers: true,
             minHeight: 520,
             striped: true,
-            toolbar: '#sys_permission_query_form',
+            toolbar: '#sys_dictionary_query_form',
             onDblClickRow: function(index,row){
-                location.href = '${pageContext.request.contextPath}/sys/permission/detail?id='+row.id;
+                location.href = '${pageContext.request.contextPath}/sys/dictionary/detail?id='+row.id;
             },
             loadFilter: function(data){
                 if(!data.success){
                     $.messager.show({msg:data.message});
                 }
-                var pager = $('#sys_permission_index_datagrid').datagrid('getPager');
+                var pager = $('#sys_dictionary_index_datagrid').datagrid('getPager');
                 pager.pagination({
                     buttons:[
                         {   iconCls:'ext-icon fa fa-plus',
                             handler:function(){
-                                location.href = '${pageContext.request.contextPath}/sys/permission/create';
+                                location.href = '${pageContext.request.contextPath}/sys/dictionary/create';
                             }
                         },
                         {   iconCls:'ext-icon fa fa-pencil',
                             handler:function(){
-                                var row = $('#sys_permission_index_datagrid').datagrid('getSelected');
+                                var row = $('#sys_dictionary_index_datagrid').datagrid('getSelected');
                                 if(row == null){
                                     $.messager.alert('提示', '请先选择一行记录!', 'warning');
                                     return false;
                                 }
-                                location.href = '${pageContext.request.contextPath}/sys/permission/edit?id='+row.id;
+                                location.href = '${pageContext.request.contextPath}/sys/dictionary/edit?id='+row.id;
                             }
                         },
                         {   iconCls:'ext-icon fa fa-trash',
                             handler:function(){
                                 var thisButton = $(this);
-                                var row = $('#sys_permission_index_datagrid').datagrid('getSelected');
+                                var row = $('#sys_dictionary_index_datagrid').datagrid('getSelected');
                                 if(row == null){
                                     $.messager.alert('提示', '请先选择一行记录!', 'warning');
                                     return false;
@@ -61,16 +55,13 @@
 
                                 $.messager.confirm('确认', '确认删除记录吗?', function(r) {
                                     if (r) {
-                                        // var index = $('#sys_permission_datagrid').datagrid('getRowIndex', row);
-                                        // $('#sys_permission_datagrid').datagrid('deleteRow', index);
-
                                         $('#overlay').show();
                                         thisButton.linkbutton('disable');
 
                                         var reqData = {id:row.id};
-                                        $.post('${pageContext.request.contextPath}/sys/permission/async-remove',reqData,function(data,textStatus,jqXHR){
+                                        $.post('${pageContext.request.contextPath}/sys/dictionary/async-remove',reqData,function(data,textStatus,jqXHR){
                                             if(data.success){
-                                                $('#sys_permission_index_datagrid').datagrid('reload');
+                                                $('#sys_dictionary_index_datagrid').datagrid('reload');
                                             }else{
                                                 $.messager.show({msg:data.message});
                                             }
@@ -85,12 +76,12 @@
                         },
                         {   iconCls:'ext-icon fa fa-eye',
                             handler:function(){
-                                var row = $('#sys_permission_index_datagrid').datagrid('getSelected');
+                                var row = $('#sys_dictionary_index_datagrid').datagrid('getSelected');
                                 if(row == null){
                                     $.messager.alert('提示', '请先选择一行记录!', 'warning');
                                     return false;
                                 }
-                                location.href = '${pageContext.request.contextPath}/sys/permission/detail?id='+row.id;
+                                location.href = '${pageContext.request.contextPath}/sys/dictionary/detail?id='+row.id;
                             }
                         }
                     ]
@@ -101,51 +92,27 @@
        ">
     <thead>
     <tr>
-        <th data-options="field:'category',formatter:function(value,row,index){
-                var res = value;
-                $.each(CATEGORYS,function(i,e){
-                    if(res == e.value){
-                        res = e.text;
-                        return false;
-                    }
-                });
-                return res;
-        }">类别</th>
-        <th data-options="field:'permission'">权限名</th>
-        <th data-options="field:'viewname'">显示名</th>
+        <th data-options="field:'code'">代码</th>
+        <th data-options="field:'name'">名称</th>
+        <th data-options="field:'disabled'">禁用</th>
     </tr>
     </thead>
 </table>
 
-<form:form id="sys_permission_query_form" method="post"
-           modelAttribute="permission" cssStyle="padding: 5px; margin: 0px;"
-           data-options="inline: true" action="${pageContext.request.contextPath}/sys/permission/async-query">
+<form:form id="sys_dictionary_query_form" method="post"
+           modelAttribute="dictionary" cssStyle="padding: 5px; margin: 0px;"
+           data-options="inline: true" action="${pageContext.request.contextPath}/sys/dictionary/async-query">
     <table class="ext-data-table" style="width: 100%" cellspacing="0" cellpadding="0">
         <tbody>
         <tr>
-            <td>类别</td>
-            <td><form:input path="category" cssClass="easyui-combobox"
-                data-options="
-                    fit:true,
-                    url:'${pageContext.request.contextPath}/sys/dictionary/async-get',
-                    method:'get',
-                    queryParams:{parentCode:'SYS_MODULES'},
-                    textField:'name',
-                    loadFilter:function(data){
-                        var resData = data.data;
-                        $.each(resData,function(i,e){
-                            CATEGORYS.push({text:e.name,value:e.value});
-                        });
-                        return resData;
-                    }"></form:input></td>
-            <td>显示名</td>
-            <td><form:input path="viewname" cssClass="easyui-textbox" data-options="fit:true"></form:input></td>
+            <td>名称</td>
+            <td><form:input path="name" cssClass="easyui-textbox" data-options="fit:true"></form:input></td>
             <td colspan="2" style="text-align: left"><a href="javascript:;" class="easyui-linkbutton" data-options="
                     width: 80,
                     iconCls:'ext-icon fa fa-search',
                     onClick: function(){
-                        var reqData = $('#sys_permission_query_form').serializeJSON();
-                        $('#sys_permission_index_datagrid').datagrid('reload',reqData);
+                        var reqData = $('#sys_dictionary_query_form').serializeJSON();
+                        $('#sys_dictionary_index_datagrid').datagrid('reload',reqData);
                     }">查询</a></td>
         </tr>
         </tbody>

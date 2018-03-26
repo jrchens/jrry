@@ -19,7 +19,15 @@
         <tr>
             <td>类别</td>
             <td><form:input path="category" cssClass="easyui-combobox"
-                            data-options="required:true,fit:true,url:'${pageContext.request.contextPath}/resources/js/permission_category_data.json',method:'get',groupField:'group',groupField:'group'"/><form:errors
+                            data-options="
+                    fit:true,
+                    url:'${pageContext.request.contextPath}/sys/dictionary/async-get',
+                    method:'get',
+                    queryParams:{parentCode:'SYS_MODULES'},
+                    textField:'name',
+                    loadFilter:function(data){
+                        return data.data;
+                    }"/><form:errors
                     path="category"/></td>
             <td>显示名</td>
             <td><form:input path="viewname" cssClass="easyui-textbox"
