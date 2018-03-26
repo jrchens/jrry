@@ -1,9 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.UserRoleRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.UserRoleRelation;
 
 public interface UserRoleRelationMapper {
     int deleteByPrimaryKey(Long id);

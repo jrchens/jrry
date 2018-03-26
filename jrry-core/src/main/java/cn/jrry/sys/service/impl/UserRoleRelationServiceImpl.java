@@ -1,21 +1,15 @@
 package cn.jrry.sys.service.impl;
 
+import cn.jrry.common.exception.ServiceException;
 import cn.jrry.sys.domain.UserRoleRelation;
 import cn.jrry.sys.mapper.UserRoleRelationMapper;
 import cn.jrry.sys.service.GroupService;
 import cn.jrry.sys.service.UserRoleRelationService;
-import cn.jrry.common.exception.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-
-import cn.jrry.sys.domain.UserRoleRelation;
-import cn.jrry.sys.mapper.UserRoleRelationMapper;
-import cn.jrry.sys.service.GroupService;
-import cn.jrry.sys.service.UserRoleRelationService;
-import cn.jrry.common.exception.ServiceException;
 
 import java.util.List;
 import java.util.Map;

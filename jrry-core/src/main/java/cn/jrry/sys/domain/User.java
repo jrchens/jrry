@@ -1,9 +1,8 @@
 package cn.jrry.sys.domain;
 
+import cn.jrry.validation.group.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import cn.jrry.validation.group.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

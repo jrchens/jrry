@@ -1,16 +1,15 @@
 package cn.jrry.sys.service.impl;
 
+import cn.jrry.common.exception.ServiceException;
+import cn.jrry.sys.domain.Group;
+import cn.jrry.sys.mapper.GroupMapper;
+import cn.jrry.sys.service.GroupService;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-
-import cn.jrry.sys.domain.Group;
-import cn.jrry.sys.mapper.GroupMapper;
-import cn.jrry.sys.service.GroupService;
-import cn.jrry.common.exception.ServiceException;
 
 import java.sql.Timestamp;
 import java.util.List;

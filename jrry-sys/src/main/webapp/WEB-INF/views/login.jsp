@@ -42,7 +42,7 @@
         <tr>
             <td>用户名</td>
             <td><form:input path="username" cssClass="easyui-textbox"
-                            data-options="required:true,fit:true"/><form:errors
+                            data-options="required:true,fit:true,value:'admin'"/><form:errors
                     path="username"/></td>
         </tr>
         <tr>

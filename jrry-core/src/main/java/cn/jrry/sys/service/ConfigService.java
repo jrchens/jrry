@@ -1,8 +1,8 @@
 package cn.jrry.sys.service;
 
-import java.util.List;
-
 import cn.jrry.sys.domain.Config;
+
+import java.util.List;
 
 public interface ConfigService {
     int deleteByPrimaryKey(String cfgCode);

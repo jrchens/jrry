@@ -1,16 +1,14 @@
 package cn.jrry.sys.domain;
 
-import java.io.Serializable;
+import cn.jrry.validation.group.Remove;
+import cn.jrry.validation.group.Save;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-
-import cn.jrry.validation.group.Remove;
-import cn.jrry.validation.group.Save;
+import java.io.Serializable;
 
 public class RolePermissionRelation implements Serializable {
     private static final long serialVersionUID = 4336130892286358021L;

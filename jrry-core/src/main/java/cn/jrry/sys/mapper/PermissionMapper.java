@@ -1,10 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.Permission;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.Permission;
-import cn.jrry.sys.domain.Permission;
 
 public interface PermissionMapper {
     int deleteByPrimaryKey(Long id);

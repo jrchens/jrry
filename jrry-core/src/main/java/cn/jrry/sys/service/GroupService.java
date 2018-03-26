@@ -1,9 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.Group;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.Group;
 
 public interface GroupService {
     int deleteByPrimaryKey(Long id);

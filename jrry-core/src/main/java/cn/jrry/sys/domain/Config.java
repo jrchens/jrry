@@ -1,11 +1,10 @@
 package cn.jrry.sys.domain;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
-
 import cn.jrry.validation.group.Remove;
 import cn.jrry.validation.group.Save;
 import cn.jrry.validation.group.Update;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

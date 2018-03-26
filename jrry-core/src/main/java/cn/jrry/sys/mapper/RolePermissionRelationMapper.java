@@ -1,10 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.RolePermissionRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.RolePermissionRelation;
-import cn.jrry.sys.domain.RolePermissionRelation;
 
 public interface RolePermissionRelationMapper {
     int deleteByPrimaryKey(Long id);

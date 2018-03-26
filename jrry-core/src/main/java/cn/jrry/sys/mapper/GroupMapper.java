@@ -1,10 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.Group;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.Group;
-import cn.jrry.sys.domain.Group;
 
 public interface GroupMapper {
     int deleteByPrimaryKey(Long id);

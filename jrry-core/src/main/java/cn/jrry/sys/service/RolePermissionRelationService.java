@@ -1,10 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.RolePermissionRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.RolePermissionRelation;
-import cn.jrry.sys.domain.RolePermissionRelation;
 
 public interface RolePermissionRelationService {
     int deleteByPrimaryKey(Long id);

@@ -1,19 +1,14 @@
 package cn.jrry.sys.service.impl;
 
+import cn.jrry.common.exception.ServiceException;
 import cn.jrry.sys.domain.Config;
 import cn.jrry.sys.mapper.ConfigMapper;
 import cn.jrry.sys.service.ConfigService;
-import cn.jrry.common.exception.ServiceException;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import cn.jrry.sys.domain.Config;
-import cn.jrry.sys.mapper.ConfigMapper;
-import cn.jrry.sys.service.ConfigService;
-import cn.jrry.common.exception.ServiceException;
 
 import java.sql.Timestamp;
 import java.util.List;

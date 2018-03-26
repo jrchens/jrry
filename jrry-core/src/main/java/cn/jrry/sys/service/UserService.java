@@ -1,9 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.User;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.User;
 
 public interface UserService {
     int deleteByPrimaryKey(Long id);

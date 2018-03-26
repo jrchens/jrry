@@ -1,9 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.Permission;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.Permission;
 
 public interface PermissionService {
     int deleteByPrimaryKey(Long id);

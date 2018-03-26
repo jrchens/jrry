@@ -1,8 +1,14 @@
 package cn.jrry.sys.controller;
 
-import java.util.List;
-import java.util.Map;
-
+import cn.jrry.sys.domain.Role;
+import cn.jrry.sys.domain.RolePermissionRelation;
+import cn.jrry.sys.service.RolePermissionRelationService;
+import cn.jrry.sys.service.RoleService;
+import cn.jrry.sys.service.UserService;
+import cn.jrry.util.ExceptionUtils;
+import cn.jrry.validation.group.Remove;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import cn.jrry.sys.domain.Role;
-import cn.jrry.sys.domain.RolePermissionRelation;
-import cn.jrry.sys.service.RolePermissionRelationService;
-import cn.jrry.sys.service.RoleService;
-import cn.jrry.sys.service.UserService;
-import cn.jrry.util.ExceptionUtils;
-import cn.jrry.validation.group.Remove;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(path = "sys/role-permission-relation")

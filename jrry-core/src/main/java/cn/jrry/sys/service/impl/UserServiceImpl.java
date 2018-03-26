@@ -1,5 +1,6 @@
 package cn.jrry.sys.service.impl;
 
+import cn.jrry.common.exception.ServiceException;
 import cn.jrry.sys.domain.Config;
 import cn.jrry.sys.domain.User;
 import cn.jrry.sys.domain.UserGroupRelation;
@@ -9,7 +10,6 @@ import cn.jrry.sys.service.ConfigService;
 import cn.jrry.sys.service.UserGroupRelationService;
 import cn.jrry.sys.service.UserRoleRelationService;
 import cn.jrry.sys.service.UserService;
-import cn.jrry.common.exception.ServiceException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Sha512Hash;
@@ -18,17 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-
-import cn.jrry.sys.domain.Config;
-import cn.jrry.sys.domain.User;
-import cn.jrry.sys.domain.UserGroupRelation;
-import cn.jrry.sys.domain.UserRoleRelation;
-import cn.jrry.sys.mapper.UserMapper;
-import cn.jrry.sys.service.ConfigService;
-import cn.jrry.sys.service.UserGroupRelationService;
-import cn.jrry.sys.service.UserRoleRelationService;
-import cn.jrry.sys.service.UserService;
-import cn.jrry.common.exception.ServiceException;
 
 import java.sql.Timestamp;
 import java.util.List;

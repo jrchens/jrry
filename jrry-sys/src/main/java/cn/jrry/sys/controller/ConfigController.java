@@ -1,9 +1,11 @@
 package cn.jrry.sys.controller;
 
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
+import cn.jrry.sys.domain.Config;
+import cn.jrry.sys.service.ConfigService;
+import cn.jrry.util.ExceptionUtils;
+import cn.jrry.validation.group.*;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import cn.jrry.sys.domain.Config;
-import cn.jrry.sys.service.ConfigService;
-import cn.jrry.util.ExceptionUtils;
-import cn.jrry.validation.group.Create;
-import cn.jrry.validation.group.Detail;
-import cn.jrry.validation.group.Edit;
-import cn.jrry.validation.group.Remove;
-import cn.jrry.validation.group.Save;
-import cn.jrry.validation.group.Update;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(path = "sys/config")

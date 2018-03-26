@@ -1,10 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.Role;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.Role;
-import cn.jrry.sys.domain.Role;
 
 public interface RoleMapper {
     int deleteByPrimaryKey(Long id);

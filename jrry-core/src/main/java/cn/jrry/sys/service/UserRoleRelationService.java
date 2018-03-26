@@ -1,9 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.UserRoleRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.UserRoleRelation;
 
 public interface UserRoleRelationService {
     int deleteByPrimaryKey(Long id);

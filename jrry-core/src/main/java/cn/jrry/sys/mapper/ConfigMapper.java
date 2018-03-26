@@ -1,9 +1,8 @@
 package cn.jrry.sys.mapper;
 
-import java.util.List;
+import cn.jrry.sys.domain.Config;
 
-import cn.jrry.sys.domain.Config;
-import cn.jrry.sys.domain.Config;
+import java.util.List;
 
 public interface ConfigMapper {
     int deleteByPrimaryKey(String cfgCode);

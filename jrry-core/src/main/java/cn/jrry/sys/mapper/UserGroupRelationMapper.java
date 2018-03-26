@@ -1,9 +1,9 @@
 package cn.jrry.sys.mapper;
 
+import cn.jrry.sys.domain.UserGroupRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.UserGroupRelation;
 
 public interface UserGroupRelationMapper {
     int deleteByPrimaryKey(Long id);

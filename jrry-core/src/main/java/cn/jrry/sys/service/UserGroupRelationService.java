@@ -1,9 +1,9 @@
 package cn.jrry.sys.service;
 
+import cn.jrry.sys.domain.UserGroupRelation;
+
 import java.util.List;
 import java.util.Map;
-
-import cn.jrry.sys.domain.UserGroupRelation;
 
 public interface UserGroupRelationService {
     int deleteByPrimaryKey(Long id);
