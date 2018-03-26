@@ -16,6 +16,7 @@ public class Dictionary implements Serializable {
     private String parentCode;
 
     private String name;
+
     private String value;
 
     private Integer srt;
