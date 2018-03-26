@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Dictionary implements Serializable {
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 6113340437756880218L;
 
@@ -134,17 +134,17 @@ public class Dictionary implements Serializable {
         }
         Dictionary other = (Dictionary) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
-            && (this.getParentCode() == null ? other.getParentCode() == null : this.getParentCode().equals(other.getParentCode()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getValue() == null ? other.getValue() == null : this.getValue().equals(other.getValue()))
-            && (this.getSrt() == null ? other.getSrt() == null : this.getSrt().equals(other.getSrt()))
-            && (this.getDisabled() == null ? other.getDisabled() == null : this.getDisabled().equals(other.getDisabled()))
-            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
-            && (this.getCruser() == null ? other.getCruser() == null : this.getCruser().equals(other.getCruser()))
-            && (this.getCrtime() == null ? other.getCrtime() == null : this.getCrtime().equals(other.getCrtime()))
-            && (this.getMduser() == null ? other.getMduser() == null : this.getMduser().equals(other.getMduser()))
-            && (this.getMdtime() == null ? other.getMdtime() == null : this.getMdtime().equals(other.getMdtime()));
+                && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
+                && (this.getParentCode() == null ? other.getParentCode() == null : this.getParentCode().equals(other.getParentCode()))
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getValue() == null ? other.getValue() == null : this.getValue().equals(other.getValue()))
+                && (this.getSrt() == null ? other.getSrt() == null : this.getSrt().equals(other.getSrt()))
+                && (this.getDisabled() == null ? other.getDisabled() == null : this.getDisabled().equals(other.getDisabled()))
+                && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()))
+                && (this.getCruser() == null ? other.getCruser() == null : this.getCruser().equals(other.getCruser()))
+                && (this.getCrtime() == null ? other.getCrtime() == null : this.getCrtime().equals(other.getCrtime()))
+                && (this.getMduser() == null ? other.getMduser() == null : this.getMduser().equals(other.getMduser()))
+                && (this.getMdtime() == null ? other.getMdtime() == null : this.getMdtime().equals(other.getMdtime()));
     }
 
     @Override

@@ -23,5 +23,6 @@ public interface DictionaryMapper {
     List<Dictionary> select(Map<String, Object> record);
 
     Dictionary selectByCode(String code);
+
     List<Dictionary> selectByParentCode(String parentCode);
 }

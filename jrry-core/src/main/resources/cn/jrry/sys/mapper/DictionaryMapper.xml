@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jrry.sys.mapper.DictionaryMapper">
-  <resultMap id="BaseResultMap" type="cn.jrry.sys.domain.Dictionary">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="code" jdbcType="VARCHAR" property="code" />
-    <result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="value" jdbcType="VARCHAR" property="value" />
-    <result column="srt" jdbcType="INTEGER" property="srt" />
-    <result column="is_disabled" jdbcType="BIT" property="disabled" />
-    <result column="is_deleted" jdbcType="BIT" property="deleted" />
-    <result column="cruser" jdbcType="VARCHAR" property="cruser" />
-    <result column="crtime" jdbcType="TIMESTAMP" property="crtime" />
-    <result column="mduser" jdbcType="VARCHAR" property="mduser" />
-    <result column="mdtime" jdbcType="TIMESTAMP" property="mdtime" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <resultMap id="BaseResultMap" type="cn.jrry.sys.domain.Dictionary">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="parent_code" jdbcType="VARCHAR" property="parentCode"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="value" jdbcType="VARCHAR" property="value"/>
+        <result column="srt" jdbcType="INTEGER" property="srt"/>
+        <result column="is_disabled" jdbcType="BIT" property="disabled"/>
+        <result column="is_deleted" jdbcType="BIT" property="deleted"/>
+        <result column="cruser" jdbcType="VARCHAR" property="cruser"/>
+        <result column="crtime" jdbcType="TIMESTAMP" property="crtime"/>
+        <result column="mduser" jdbcType="VARCHAR" property="mduser"/>
+        <result column="mdtime" jdbcType="TIMESTAMP" property="mdtime"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_dictionary
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="cn.jrry.sys.domain.Dictionary" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="cn.jrry.sys.domain.Dictionary" useGeneratedKeys="true" keyProperty="id">
     insert into sys_dictionary (code, parent_code, 
       `name`, `value`, srt, is_disabled, is_deleted,
       cruser, crtime, mduser,
@@ -29,7 +29,7 @@
       #{cruser,jdbcType=VARCHAR}, #{crtime,jdbcType=TIMESTAMP}, #{mduser,jdbcType=VARCHAR}, 
       #{mdtime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.jrry.sys.domain.Dictionary">
+    <update id="updateByPrimaryKey" parameterType="cn.jrry.sys.domain.Dictionary">
     update sys_dictionary
     set 
       `name` = #{name,jdbcType=VARCHAR},
@@ -40,39 +40,39 @@
       mdtime = #{mdtime,jdbcType=TIMESTAMP}
     where is_deleted = 0 and id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="selectColumns"/>
-    from sys_dictionary
-    where is_deleted = 0 and id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select 
-    <include refid="selectColumns"/>
-    from sys_dictionary where is_deleted = 0
-  </select>
-  
-  <sql id="selectColumns">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="selectColumns"/>
+        from sys_dictionary
+        where is_deleted = 0 and id = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="selectColumns"/>
+        from sys_dictionary where is_deleted = 0
+    </select>
+
+    <sql id="selectColumns">
     id, code, parent_code, `name`, `value`, srt, is_disabled, is_deleted, cruser, crtime,
     mduser, mdtime
   </sql>
-  <sql id="selectWhereCondition">
-    <where>
-      is_deleted = 0
-      <if test="name != null and name != ''">
-        <bind name="name" value="'%' + name + '%'"/>
-        and `name` LIKE #{name,jdbcType=VARCHAR}
-      </if>
-      <if test="parentCode == null or parentCode == ''">
-        and parent_code IS NULL
-      </if> 
-      <if test="parentCode != null and parentCode != ''">
-        and parent_code = #{parentCode,jdbcType=VARCHAR}
-      </if> 
-    </where>
-  </sql>
+    <sql id="selectWhereCondition">
+        <where>
+            is_deleted = 0
+            <if test="name != null and name != ''">
+                <bind name="name" value="'%' + name + '%'"/>
+                and `name` LIKE #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="parentCode == null or parentCode == ''">
+                and parent_code IS NULL
+            </if>
+            <if test="parentCode != null and parentCode != ''">
+                and parent_code = #{parentCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </sql>
 
-  <update id="removeByPrimaryKey" parameterType="cn.jrry.sys.domain.Dictionary">
+    <update id="removeByPrimaryKey" parameterType="cn.jrry.sys.domain.Dictionary">
     update sys_dictionary`
     set
     is_deleted = 1,
@@ -80,32 +80,32 @@
     mdtime = #{mdtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="count" resultType="int">
-    select
-    COUNT(1)
-    from sys_dictionary
-    <include refid="selectWhereCondition"/>
-  </select>
-  <select id="select" resultMap="BaseResultMap">
-    select
-    <include refid="selectColumns"/>
-    from sys_dictionary
-    <include refid="selectWhereCondition"/>
-    ORDER BY ${sort} ${order}
-    limit ${offset},${rows}
-  </select>
-  
-  
-  <select id="selectByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="selectColumns"/>
-    from sys_dictionary
-    where is_deleted = 0 and code = #{code,jdbcType=VARCHAR}
-  </select>
-  <select id="selectByParentCode" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="selectColumns"/>
-    from sys_dictionary
-    where is_deleted = 0 and parent_code = #{parentCode,jdbcType=VARCHAR}
-  </select>
+    <select id="count" resultType="int">
+        select
+        COUNT(1)
+        from sys_dictionary
+        <include refid="selectWhereCondition"/>
+    </select>
+    <select id="select" resultMap="BaseResultMap">
+        select
+        <include refid="selectColumns"/>
+        from sys_dictionary
+        <include refid="selectWhereCondition"/>
+        ORDER BY ${sort} ${order}
+        limit ${offset},${rows}
+    </select>
+
+
+    <select id="selectByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="selectColumns"/>
+        from sys_dictionary
+        where is_deleted = 0 and code = #{code,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByParentCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="selectColumns"/>
+        from sys_dictionary
+        where is_deleted = 0 and parent_code = #{parentCode,jdbcType=VARCHAR}
+    </select>
 </mapper>
