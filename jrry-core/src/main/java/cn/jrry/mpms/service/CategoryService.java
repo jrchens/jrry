@@ -1,11 +1,10 @@
 package cn.jrry.mpms.service;
 
-import java.util.List;
-import java.util.Map;
-
-import cn.jrry.mpms.domain.Category;
 import cn.jrry.common.domain.Node;
 import cn.jrry.mpms.domain.Category;
+
+import java.util.List;
+import java.util.Map;
 
 public interface CategoryService {
     int deleteByPrimaryKey(Long id);

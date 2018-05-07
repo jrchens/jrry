@@ -1,12 +1,10 @@
 package cn.jrry.mpms.mapper;
 
-import java.util.List;
-import java.util.Map;
-
 import cn.jrry.mpms.domain.Category;
 import org.apache.ibatis.annotations.Param;
 
-import cn.jrry.mpms.domain.Category;
+import java.util.List;
+import java.util.Map;
 
 public interface CategoryMapper {
     int deleteByPrimaryKey(Long id);

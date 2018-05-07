@@ -1,13 +1,13 @@
 package cn.jrry.mpms.service.impl;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-import cn.jrry.sys.service.GroupService;
+import cn.jrry.common.domain.Node;
+import cn.jrry.common.exception.ServiceException;
 import cn.jrry.mpms.domain.Category;
 import cn.jrry.mpms.mapper.CategoryMapper;
+import cn.jrry.mpms.service.CategoryService;
+import cn.jrry.sys.service.GroupService;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import cn.jrry.sys.service.GroupService;
-import cn.jrry.common.domain.Node;
-import cn.jrry.common.exception.ServiceException;
-import cn.jrry.mpms.domain.Category;
-import cn.jrry.mpms.mapper.CategoryMapper;
-import cn.jrry.mpms.service.CategoryService;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
